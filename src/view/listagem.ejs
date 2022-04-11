@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head') %>
+
+<body>
+
+    <%- include('includes/navbar') %>    
+
+    <% if (user) { %>
+      <h2 id="bemvinde">Bem-vinde, <%= user.nome %></h2>
+    <%} %>
+      
+      <div>
+        <h1>Todos os Personagens</h1>
+      <table class="personagens">
+          <tr>
+          <th>Nome<a href="/personagens/filtro/nome+asc" title='Ordenar por nome em ordem ascendente'>&#x25B4;</a> <a href="/personagens/filtro/nome+desc" title='Ordenar por nome em ordem descendente'>&#x25BE;</a></th>
+          <th>Origem<a href="/personagens/filtro/origem+asc" title='Ordenar por origem em ordem ascendente'>&#x25B4;</a> <a href="/personagens/filtro/origem+desc" title='Ordenar por origem em ordem descendente'>&#x25BE;</a></th>
+          <th>Primeira Aparição<a href="/personagens/filtro/data+asc" title='Ordenar por data em ordem ascendente'>&#x25B4;</a> <a href="/personagens/filtro/data+desc" title='Ordenar por data em ordem descendente'>&#x25BE;</a></th>
+          <th></th>
+        </tr>
+          <% personagens.forEach(personagem => { %>
+            <tr>
+              <td><%= personagem.nome %></td>
+              <td><%= personagem.origem %></td>
+              <td><%= new Date(personagem.data).toLocaleDateString('en-GB', {timeZone: "UTC"}) %></td>
+              <td> <a href="/personagens/<%= personagem.id %>"> Ver detalhes </a> </td>
+            </tr>
+          <% }) %>
+      </table>
+      </div>
+</body>
+
+</html>

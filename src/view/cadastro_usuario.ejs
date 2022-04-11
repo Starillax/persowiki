@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head') %>
+
+<body>
+
+    <%- include('includes/navbar') %>   
+    <div class="principal">
+        <form action="/users/cadastrar" method="post">
+            <h1>Cadastro</h1>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome">
+            <label for="nome">E-mail</label>
+            <input type="email" name="email">
+            <label for="nome">Senha</label>
+            <input type="password" name="senha">
+            <section>
+                <input type="radio" id="admin" name="admin" value="nao" required>
+                <label for="vivo">Você é um Usuário</label><br>
+                <input type="radio" id="admin" name="admin" value="sim">
+                <label for="morto">Você é um Administrador</label><br>
+            </section>
+            <input type="hidden" name="favorito" value="null">
+            <br>
+            <button type="submit">Cadastrar sua conta</button>
+        </form>
+    </div> 
+</body>
+</html>

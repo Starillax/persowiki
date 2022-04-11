@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head') %>
+
+<body>
+
+    <script>
+        function defaultImage(img) {
+            img.onerror = "";
+            img.src = "https://cf.shopee.com.br/file/6043d9950110714e412e508a83be939a";
+        }
+    </script>
+
+    <%- include('includes/navbar') %> 
+    
+
+    <div class="principal">
+        <div class="detalhes">
+            <div class="titulo">
+            <h1><%= personagem.nome %></h1>
+            <% if(personagem.url != '') {%>
+            <img src="<%= personagem.url %>" alt="Imagem de <%= personagem.nome %>" onerror="defaultImage(this);";"">
+            <% } %>
+            </div>
+            <% if(user) { %>
+                <% if (user.admin == "sim") { %>
+                    <a href="/personagens/editar/<%= personagem.id %>">Editar Informações da Personagem</a>
+                    |
+                    <a href="/personagens/excluir/<%= personagem.id %>">Excluir Personagem</a>
+                <% } else if(user.favorito == personagem.nome) { %>
+                    <a href="/users/desfavoritar"> Desfavoritar</a>
+                <% }else {   %>
+                <a href="/users/favoritar/<%= personagem.nome %>">Favoritar</a>
+                <% } } %>
+            <hr>
+            <div class="gerais">
+                <p>Idade: <%= personagem.idade %></p>
+                <p>Gênero: <%= personagem.genero %></p>
+                <p>Status: <%= personagem.status %></p>
+                <p>Origem: <%= personagem.origem %></p>
+                <p>Criador(es): <%= personagem.criador %></p>
+                <p>Data da Primeira Aparição: <%= new Date(personagem.data).toLocaleDateString('en-GB', {timeZone: "UTC"}) %></p>
+            </div>
+            <p class="descricao"><%= personagem.descricao %></p>
+        </div>
+    </div>
+
+</body>
+</html>

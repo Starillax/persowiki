@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head') %>
+
+<body>
+
+    <%- include('includes/navbar') %>
+    <div class="principal">
+        <form action="/users/login" method="post">
+            <h1>Login</h1>
+            <label for="nome">E-mail</label>
+            <input type="email" name="email">
+            <label for="nome">Senha</label>
+            <input type="password" name="senha">
+            <br>
+            <button type="submit">Entrar na sua conta</button>
+        </form>
+    </div>
+</body>
+</html>

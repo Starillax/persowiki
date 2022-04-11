@@ -1,0 +1,52 @@
+<header>
+    <input type="checkbox" id="check">
+    <label id="icone" for="check"></label>
+    <div class="barra">
+        <nav class="nav-lateral">
+            <a href="/personagens">
+                <div class="Link">PERSONAGENS</div>
+            </a>
+            <% if (user !== undefined) { %>
+                <% if(user.admin == "sim") { %>
+                    <a href="/personagens/cadastrar">
+                        <div class="Link">CADASTRAR PERSONAGEM</div>
+                    </a>
+            <%}%>
+                <a id="perfil" href="/users/perfil">
+                    <div class="Link">VER PERFIL</div></a>
+                <a href="/users/logout">
+                    <div class="Link">LOGOUT</div>
+                </a>
+            <%} else { %>
+                <a id="cadastro" href="/users/cadastro_usuario">
+                    <div class="Link">CADASTRO</div>
+                </a>
+                <a id="login" href="/users/logar">
+                    <div class="Link">LOGIN</div>
+                </a>
+            <%}%>
+        </nav>
+    </div>
+<nav>
+    <ul>
+        <li>PERSOWIKI</li>
+        <li><a href="/personagens">PERSONAGENS</a></li>
+        <% if (user !== undefined) { %>
+            <% if(user.admin == "sim") { %>
+                <li><a href="/personagens/cadastrar">CADASTRAR PERSONAGEM</a></li>
+            <%}%>
+            <li><a id="perfil" href="/users/perfil">VER PERFIL</a></li> 
+            <li><a href="/users/logout">LOGOUT</a></li> 
+        <%} else { %>
+            <li><a id="cadastro" href="/users/cadastro_usuario">CADASTRO</a></li>
+            <li><a id="login" href="/users/logar">LOGIN</a></li>
+        <%}%>
+    </ul>
+    <h1 class="text-oculto">PERSOWIKI</h1>
+    <label for="menu-hamburguer" class="text-oculto">
+        <div class="mburg">
+        <span class="hamburguer"></span>
+        </div>
+    </label>
+</nav>
+</header>

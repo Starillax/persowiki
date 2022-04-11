@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head') %>
+
+<body>
+
+    <%- include('includes/navbar') %>    
+
+    <div class="principal">
+        <div class="detalhes">
+            <h1> <%= user.nome %></h1>
+            <hr>
+            <p>E-mail: <%= user.email %></p>
+            <% if (user.admin !== 'sim') { %>
+                <% if (user.favorito !== 'null') { %>
+                    <p>Personagem favorito: <%= user.favorito %></p>
+            <%} else { %>
+            Você ainda não favoritou nenhum personagem!
+        <%}%>
+        <%}%>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<%- include('includes/head') %>
+
+<body>
+
+    <%- include('includes/navbar') %>
+
+    <% if(tipo == "edit") {
+        texto = "Editar"
+        url = "/edit"
+    } else if(tipo == "cadastro") {
+        texto = "Cadastro de"
+        url = ""
+        personagem = {nome:"", idade:"", genero:"", status:"",origem:"", criador:"", descricao:"", data:"", url:"" }
+    } %>
+
+    <div class="principal">
+        <form action="/personagens<%=url%>" method="post" class="form-personagem">
+            <h1> <%= texto %> Personagem</h1>
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" value="<%= personagem.nome %>">
+            <label for="idade">Idade</label>
+            <input type="number" name="idade" value="<%= personagem.idade %>">
+            <label for="genero">Gênero</label>
+            <input type="text" name="genero" value="<%= personagem.genero %>">
+            <p>Status</p>
+            <section>
+                <input type="radio" id="status" name="status" value="Vivo" <% if(personagem.status == "Vivo"){  %> checked <% }  %> >
+                <label for="vivo">Vivo</label><br>
+                <input type="radio" id="status" name="status" value="Morto" <% if(personagem.status == "Morto"){  %> checked <% }  %>>
+                <label for="morto">Morto</label><br>
+                <input type="radio" id="status" name="status" value="Desconhecido" <% if(personagem.status == "Desconhecido"){  %> checked <% }  %>>
+                <label for="desconhecido">Desconhecido</label>
+            </section>
+            <label for="origem">Origem</label>
+            <input type="text" name="origem" value="<%= personagem.origem %>">
+            <label for="criador">Criador</label>
+            <input type="text" name="criador" value="<%= personagem.criador %>">
+            <label for="descricao">Descrição</label>
+            <input type="text" name="descricao" value="<%= personagem.descricao %>">
+            <label for="data">Data da Primeira Aparição</label>
+            <input type="date" name="data" value="<%= personagem.data %>" required>
+            <label for="url">Link de Imagem do Personagem (opcional)</label>
+            <input type="text" name="url" value="<%= personagem.url %>">
+            <br>
+            <button type="submit"><%= texto %> Personagem</button> 
+        </form>
+    </div>
+
+</body>
+</html>
